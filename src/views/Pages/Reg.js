@@ -19,8 +19,8 @@ import {
 
 const LoginSchema = Yup.object().shape({
   first_name: Yup.string()
-    .required("first_name is required")
-    .min(4, "first_name must be 4 characters at minimum"),
+    .required("First name is required")
+    .min(4, "First name must be 4 characters at minimum"),
   password: Yup.string()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/,
@@ -28,20 +28,20 @@ const LoginSchema = Yup.object().shape({
     )
     .required("Password is required"),
   last_name: Yup.string()
-    .required("first_name is required")
-    .min(4, "first_name must be 4 characters at minimum"),
+    .required("Last name is required")
+    .min(4, "Last name must be 4 characters at minimum"),
   email: Yup.string()
-    .required("email is required")
-    .email(4, "enter valid email address"),
+    .required("Email is required")
+    .email( "Enter valid email address"),
   dob: Yup.string()
-    .required("date of birth is required")
-    .min(4, "date of birth must be 4 characters at minimum"),
+    .required("Date of birth is required")
+    .min(4, "Date of birth must be 4 characters at minimum"),
   doj: Yup.string()
-    .required("date of joining is required")
-    .min(4, "date of joining must be 4 characters at minimum"),
+    .required("Date of joining is required")
+    .min(4, "Date of joining must be 4 characters at minimum"),
   address: Yup.string()
-    .required("address is required")
-    .min(4, "address must be 4 characters at minimum"),
+    .required("Address is required")
+    .min(4, "Address must be 4 characters at minimum"),
   confirm_password: Yup.string()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/,
