@@ -9,45 +9,48 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  CardText,
   FormGroup,
   Form,
-  Input,
   Row,
   Col,
 } from "reactstrap";
 
 const LoginSchema = Yup.object().shape({
   first_name: Yup.string()
-    .required("first_name is required")
-    .min(4, "first_name must be 4 characters at minimum"),
+    .required("First name is required")
+    .min(4, "First name must be 4 characters at minimum"),
   password: Yup.string()
+    .required("Password is required")
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/,
       "Min 1 uppercase letter, Min 1 lowercase letter, Min 1 special character, Min 1 number, Min 8 characters, Max 20 characters."
-    )
-    .required("Password is required"),
+    ),
   last_name: Yup.string()
-    .required("first_name is required")
-    .min(4, "first_name must be 4 characters at minimum"),
+    .required("Last name is required")
+    .min(4, "Last name must be 4 characters at minimum"),
   email: Yup.string()
-    .required("email is required")
-    .email(4, "enter valid email address"),
+    .required("Email is required")
+    .email(4, "Enter valid email address"),
   dob: Yup.string()
-    .required("date of birth is required")
-    .min(4, "date of birth must be 4 characters at minimum"),
+    // .required("Date of birth is required")
+    .min(4, "Date of birth must be 4 characters at minimum"),
   doj: Yup.string()
-    .required("date of joining is required")
-    .min(4, "date of joining must be 4 characters at minimum"),
+    // .required("Date of joining is required")
+    .min(4, "Date of joining must be 4 characters at minimum"),
   address: Yup.string()
-    .required("address is required")
-    .min(4, "address must be 4 characters at minimum"),
+    .required("Address is required")
+    .min(4, "Address must be 4 characters at minimum"),
   confirm_password: Yup.string()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/,
       "Min 1 uppercase letter, Min 1 lowercase letter, Min 1 special character, Min 1 number, Min 8 characters, Max 20 characters."
     )
-    .min(4, "confirm_password must be 4 characters at minimum"),
+    .required("Password is required")
+    .oneOf([Yup.ref("password"), null], "Passwords must match"),
+  contact_no: Yup.string().matches(
+    /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
+    "Min 10 digits."
+  ),
 });
 
 function Registration() {
@@ -71,6 +74,7 @@ function Registration() {
                     address: "",
                     password: "",
                     confirm_password: "",
+                    contact_no: "",
                   }}
                   validationSchema={LoginSchema}
                   onSubmit={(values) => {
@@ -86,7 +90,6 @@ function Registration() {
                             <FormGroup>
                               <label>First Name</label>
                               <Field
-                                
                                 className={`mt-2 form-control
                         ${
                           touched.first_name && errors.first_name
@@ -98,10 +101,10 @@ function Registration() {
                                 type="text"
                               />
                               <ErrorMessage
-						component="div"
-						name="first_name"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="first_name"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                           <Col className="px-md-1" md="3">
@@ -110,7 +113,6 @@ function Registration() {
                               <Field
                                 placeholder="Last Name"
                                 type="text"
-                                
                                 className={`mt-2 form-control
                         ${
                           touched.last_name && errors.last_name
@@ -120,10 +122,10 @@ function Registration() {
                                 name="last_name"
                               />
                               <ErrorMessage
-						component="div"
-						name="last_name"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="last_name"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                           <Col className="pl-md-1" md="4">
@@ -134,16 +136,15 @@ function Registration() {
                               <Field
                                 placeholder="mike@email.com"
                                 type="email"
-                                
                                 className={`mt-2 form-control
                         ${touched.email && errors.email ? "is-invalid" : ""}`}
                                 name="email"
                               />
                               <ErrorMessage
-						component="div"
-						name="email"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="email"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                         </Row>
@@ -154,7 +155,6 @@ function Registration() {
                               <Field
                                 placeholder="Home Address"
                                 type="text"
-                                
                                 className={`mt-2 form-control
                         ${
                           touched.address && errors.address ? "is-invalid" : ""
@@ -162,10 +162,10 @@ function Registration() {
                                 name="address"
                               />
                               <ErrorMessage
-						component="div"
-						name="address"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="address"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                         </Row>
@@ -176,16 +176,15 @@ function Registration() {
                               <Field
                                 placeholder="DOB"
                                 type="date"
-                                
                                 className={`mt-2 form-control
                         ${touched.dob && errors.dob ? "is-invalid" : ""}`}
                                 name="dob"
                               />
                               <ErrorMessage
-						component="div"
-						name="dob"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="dob"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                           <Col className="pr-md-1" md="4">
@@ -194,16 +193,15 @@ function Registration() {
                               <Field
                                 placeholder="DOJ"
                                 type="date"
-                                
                                 className={`mt-2 form-control
                         ${touched.doj && errors.doj ? "is-invalid" : ""}`}
                                 name="doj"
                               />
                               <ErrorMessage
-						component="div"
-						name="doj"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="doj"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                           <Col className="px-md-1" md="4">
@@ -212,7 +210,6 @@ function Registration() {
                               <Field
                                 placeholder="Contact No."
                                 type="text"
-                                
                                 className={`mt-2 form-control
                         ${
                           touched.contact_no && errors.contact_no
@@ -222,10 +219,10 @@ function Registration() {
                                 name="contact_no"
                               />
                               <ErrorMessage
-						component="div"
-						name="contact_no"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="contact_no"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                         </Row>
@@ -234,22 +231,17 @@ function Registration() {
                             <FormGroup>
                               <label>Password </label>
                               <Field
-                                placeholder="password"
                                 type="password"
-                                
+                                name="password"
+                                placeholder="Enter password"
                                 className={`mt-2 form-control
-                        ${
-                          touched.passsword && errors.passsword
-                            ? "is-invalid"
-                            : ""
-                        }`}
-                                name="passsword"
+						${touched.password && errors.password ? "is-invalid" : ""}`}
                               />
                               <ErrorMessage
-						component="div"
-						name="password"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="password"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                           <Col className="pr-md-1" md="6">
@@ -258,7 +250,6 @@ function Registration() {
                               <Field
                                 placeholder="confirm password"
                                 type="password"
-                                
                                 className={`mt-2 form-control
                         ${
                           touched.confirm_password && errors.confirm_password
@@ -268,10 +259,10 @@ function Registration() {
                                 name="confirm_password"
                               />
                               <ErrorMessage
-						component="div"
-						name="confirm_password"
-						className="invalid-feedback"
-						/>
+                                component="div"
+                                name="confirm_password"
+                                className="invalid-feedback"
+                              />
                             </FormGroup>
                           </Col>
                         </Row>
@@ -281,17 +272,16 @@ function Registration() {
                         <h1 className="p-3 mt-5">Form Submitted</h1>
 
                         <div className="alert alert-success mt-3">
-                          Thank for your connecting with us. Here's what we got
-                          from you !
+                          Successfully Registred!
                         </div>
-                        <ul className="list-group">
+                        {/* <ul className="list-group">
                           <li className="list-group-item">
                             Email: {values.email}
                           </li>
                           <li className="list-group-item">
                             Password: {values.password}
                           </li>
-                        </ul>
+                        </ul> */}
                       </div>
                     )
                   }

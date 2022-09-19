@@ -17,34 +17,29 @@ const LoginSchema = Yup.object().shape({
     .required("Password is required"),
 });
 
-function Login() {
+function Reset() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
-  
-  // const handleSubmit = async (e) => {
-  //   alert("submit");
-  //   e.preventDefault();
-  //   const user = { username, password };
-  //   console.log(uname);
-  //   // send the username and password to the server
-  //   const response = await axios.post(
-  //     "http://blogservice.herokuapp.com/api/login",
-  //     user
-  //   );
-  //   // set the state of the user
-  //   setUser(response.data);
-  //   // store the user in localStorage
-  //   localStorage.setItem("user", response.data);
-  //   console.log(response.data);
-  // };
+  const uname = "";
+  const pwd = "";
 
-  const handleSubmit = ()=>{
+  const handleSubmit = async (e) => {
     alert("submit");
+    e.preventDefault();
     const user = { username, password };
-    localStorage.setItem("user", user);
-    console.log("uname:"+user)
-  }
+    console.log(uname);
+    // send the username and password to the server
+    const response = await axios.post(
+      "http://blogservice.herokuapp.com/api/login",
+      user
+    );
+    // set the state of the user
+    setUser(response.data);
+    // store the user in localStorage
+    localStorage.setItem("user", response.data);
+    console.log(response.data);
+  };
   return (
     <div className="container">
       <div className="row justify-content-md-center">
@@ -75,8 +70,8 @@ function Login() {
                         className={`mt-2 form-control
 						${touched.username && errors.username ? "is-invalid" : ""}`}
                         // onChange={({ target }) => setUsername(target.value)}
-						onChange={e => setUsername(e.target.value)}
-                        value={username}
+						// onChange={e => setUsername(e.target.value)}
+                        values={uname}
                       />
 
                       <ErrorMessage
@@ -98,8 +93,8 @@ function Login() {
                         className={`mt-2 form-control
 						${touched.password && errors.password ? "is-invalid" : ""}`}
                         // onChange={({ target }) => setPassword(target.value)}
-						onChange={e => setPassword(e.target.value)}
-                        value={password}
+						// onChange={e => setPassword(e.target.value)}
+                        values={pwd}
                       />
                       <ErrorMessage
                         component="div"
@@ -140,4 +135,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Reset;
