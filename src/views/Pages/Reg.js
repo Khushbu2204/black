@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Formik, Field, ErrorMessage } from 'formik';
+import { register } from "services/use-service";
 
 // reactstrap components
 import {
@@ -34,7 +35,7 @@ function Registration() {
                       <FormGroup>
                         <label>First Name</label>
                         <Input
-                          
+
                           placeholder="First Name"
                           type="text"
                         />
@@ -44,7 +45,7 @@ function Registration() {
                       <FormGroup>
                         <label>Last Name</label>
                         <Input
-                          
+
                           placeholder="Last Name"
                           type="text"
                         />
@@ -86,7 +87,7 @@ function Registration() {
                       <FormGroup>
                         <label>Address</label>
                         <Input
-                          
+
                           placeholder="Home Address"
                           type="text"
                         />
@@ -116,13 +117,13 @@ function Registration() {
                       <FormGroup>
                         <label>Contact No.</label>
                         <Input
-                          
+
                           placeholder="Contact No."
                           type="text"
                         />
                       </FormGroup>
                     </Col>
-              
+
                   </Row>
                   <Row>
                     <Col className="pr-md-1" md="6">
