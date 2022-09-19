@@ -80,6 +80,7 @@ var routes = [
     // rtlName: "Login",
     // icon: "tim-icons icon-badge",
     component: UserLogin,
+    layout: "/admin"
   },
   {
     path: "/register",
