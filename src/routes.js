@@ -8,6 +8,7 @@ import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
 import UserLogin from "views/Pages/Login.js";
 import UserRegisterations from "views/Pages/Reg.js";
+import PhotoUpload from "views/pages/PhotoUpload.js";
 
 var routes = [
   {

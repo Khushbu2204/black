@@ -62,24 +62,24 @@ const LoginSchema = Yup.object().shape({
 
 
 function Registration() {
-  const [First_name, setFirstname] = useState("");
-  const [Last_name, setLastname] = useState("");
-  const [Emp_code, setEmpcode] = useState("");
-  const [Address, setAddress] = useState("");
-  const [Date_of_Birth, setDob] = useState("");
-  const [Date_of_Joining, setDoj] = useState("");
-  const [Contact_no, setContactno] = useState("");
-  const [E_mail, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
+  const [emp_code, setEmpcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [date_of_Birth, setDob] = useState("");
+  const [date_of_Joining, setDoj] = useState("");
+  const [contact_no, setContactno] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
 const [user,setUser] = useState();
 
 
-  const handleLogin = async (e) => {
-   // alert("submit");
+  const handleReg = async (e) => {
      e.preventDefault();
-     const user = { First_name, Last_name,Emp_code,Address,Date_of_Birth,Date_of_Joining,Contact_no,E_mail,Password };
-    // console.log(username);
+     alert("submit");
+     const user = { first_name, last_name,emp_code,address,date_of_Birth,date_of_Joining,contact_no,email,password };
+    console.log(user);
      const response = await axios.post(
       "http://localhost:8080/register",
       user
@@ -120,7 +120,7 @@ const [user,setUser] = useState();
                 >
                   {({ touched, errors, isSubmitting, values }) =>
                     !isSubmitting ? (
-                      <Form onSubmit={handleLogin()}>
+                      <Form>
                         <Row>
                           <Col className="pr-md-1" md="6">
                             <FormGroup>
@@ -131,15 +131,15 @@ const [user,setUser] = useState();
                                     ? "is-invalid"
                                     : ""
                                   }`}
-                                name="First_name"
+                                name="first_name"
                                 placeholder="First Name"
                                 type="text"
                                 onChange={e => setFirstname(e.target.value)}
-                                value={First_name}
+                                value={first_name}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="First_name"
+                                name="first_name"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -155,13 +155,13 @@ const [user,setUser] = useState();
                                     ? "is-invalid"
                                     : ""
                                   }`}
-                                name="Last_name"
+                                name="last_name"
                                 onChange={e => setLastname(e.target.value)}
-                                value={Last_name}
+                                value={last_name}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Last_name"
+                                name="last_name"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -178,13 +178,13 @@ const [user,setUser] = useState();
                                     ? "is-invalid"
                                     : ""
                                   }`}
-                                name="Emp_code"
+                                name="emp_code"
                                 onChange={e => setEmpcode(e.target.value)}
-                                value={Emp_code}
+                                value={emp_code}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Emp_code"
+                                name="emp_code"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -214,13 +214,13 @@ const [user,setUser] = useState();
                                 className={`mt-2 form-control
                         ${touched.address && errors.address ? "is-invalid" : ""
                                   }`}
-                                name="Address"
+                                name="address"
                                 onChange={e => setAddress(e.target.value)}
-                                value={Address}
+                                value={address}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Address"
+                                name="address"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -235,13 +235,13 @@ const [user,setUser] = useState();
                                 type="date"
                                 className={`mt-2 form-control
                         ${touched.Date_of_Birth && errors.Date_of_Birth ? "is-invalid" : ""}`}
-                                name="Date_of_Birth"
+                                name="date_of_Birth"
                                 onChange={e => setDob(e.target.value)}
-                                value={Date_of_Birth}
+                                value={date_of_Birth}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Date_of_Birth"
+                                name="date_of_Birth"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -254,13 +254,13 @@ const [user,setUser] = useState();
                                 type="date"
                                 className={`mt-2 form-control
                         ${touched.Date_of_Joining && errors.Date_of_Joining ? "is-invalid" : ""}`}
-                                name="Date_of_Joining"
+                                name="date_of_Joining"
                                 onChange={e => setDoj(e.target.value)}
-                                value={Date_of_Joining}
+                                value={date_of_Joining}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Date_of_Joining"
+                                name="date_of_Joining"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -278,13 +278,13 @@ const [user,setUser] = useState();
                                     ? "is-invalid"
                                     : ""
                                   }`}
-                                name="Contact_no"
+                                name="contact_no"
                                 onChange={e => setContactno(e.target.value)}
-                                value={Contact_no}
+                                value={contact_no}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Contact_no"
+                                name="contact_no"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -299,13 +299,13 @@ const [user,setUser] = useState();
                                 type="email"
                                 className={`mt-2 form-control
                         ${touched.E_mail && errors.E_mail ? "is-invalid" : ""}`}
-                                name="E_mail"
+                                name="email"
                                 onChange={e => setEmail(e.target.value)}
-                                value={E_mail}
+                                value={email}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="E_mail"
+                                name="email"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -317,16 +317,16 @@ const [user,setUser] = useState();
                               <label>Password </label>
                               <Field
                                 type="password"
-                                name="Password"
+                                name="password"
                                 placeholder="Enter password"
                                 className={`mt-2 form-control
-						${touched.Password && errors.Password ? "is-invalid" : ""}`}
+						${touched.password && errors.password ? "is-invalid" : ""}`}
                                 onChange={e => setPassword(e.target.value)}
-                                value={Password}
+                                value={password}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Password"
+                                name="password"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -376,7 +376,7 @@ const [user,setUser] = useState();
                 </Formik>
               </CardBody>
               <CardFooter>
-                <Button className="btn-fill" color="primary" type="submit">
+                <Button className="btn-fill" color="primary" onClick={handleReg}>
                   Submit
                 </Button>
               </CardFooter>

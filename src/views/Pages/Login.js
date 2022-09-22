@@ -29,7 +29,7 @@ function Login() {
    // console.log(username);
     // send the username and password to the server
    const response = await axios.post(
-      "http://localhost:8080/user/login",
+      "http://localhost:8080/login",
        user
      );
      // set the state of the user
