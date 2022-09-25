@@ -3,11 +3,13 @@ import Icons from "views/Icons.js";
 import Map from "views/Map.js";
 import Notifications from "views/Notifications.js";
 // import Rtl from "views/Rtl.js";
-import TableList from "views/TableList.js";
+import Tables from "views/ClubHistory";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
 import UserLogin from "views/Pages/Login.js";
 import UserRegisterations from "views/Pages/Reg.js";
+import Eventhistory from "views/EventHistory";
+import Resetpass from "views/Pages/Resetpass";
 
 var routes = [
   {
@@ -51,11 +53,10 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/tables",
-    name: "Table List",
-    rtlName: "قائمة الجدول",
+    path: "/club-history",
+    name: "Club History",
     icon: "tim-icons icon-puzzle-10",
-    component: TableList,
+    component: Tables,
     layout: "/admin"
   },
   {
@@ -66,20 +67,20 @@ var routes = [
     component: Typography,
     layout: "/admin"
   },
-  // {
-  //   path: "/rtl-support",
-  //   name: "RTL Support",
-  //   rtlName: "ار تي ال",
-  //   icon: "tim-icons icon-world",
-  //   component: Rtl,
-  //   layout: "/rtl"
-  // },
+  {
+    path: "/event-history",
+    name: "Event History",
+    icon: "tim-icons icon-align-center",
+    component: Eventhistory,
+    layout: "/admin"
+  },
   {
     path: "/login",
     // name: "Login",
     // rtlName: "Login",
     // icon: "tim-icons icon-badge",
     component: UserLogin,
+    layout: "/admin"
   },
   {
     path: "/register",
@@ -88,6 +89,13 @@ var routes = [
     // icon: "tim-icons icon-badge",
     component: UserRegisterations,
     layout: "/admin"
-  }
+  },
+  {
+    path: "/reset-password",
+    name: "Reset Password",
+    icon: "tim-icons icon-align-center",
+    component: Resetpass,
+    layout: "/admin"
+  },
 ];
 export default routes;

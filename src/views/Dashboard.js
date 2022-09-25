@@ -73,8 +73,8 @@ function Dashboard(props) {
                           <i className="tim-icons icon-single-02" />
                         </span>
                       </Button> */}
-                      
-                        <NavLink
+
+                      <NavLink
                         to={'login'}
                         tag="label"
                         className={classNames("btn-simple", {
@@ -83,16 +83,16 @@ function Dashboard(props) {
                         color="info"
                         id="0"
                         size="sm"
-                    >
-                       <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block text-white">
+                      >
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block text-white">
                           Login
                         </span>
                         <span className="d-block d-sm-none">
                           <i className="tim-icons icon-gift-2" />
                         </span>
-                    </NavLink>
-                     
-                    <NavLink
+                      </NavLink>
+
+                      <NavLink
                         to={'register'}
                         tag="label"
                         className={classNames("btn-simple", {
@@ -101,14 +101,14 @@ function Dashboard(props) {
                         color="info"
                         id="0"
                         size="sm"
-                    >
-                       <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block text-white">
+                      >
+                        <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block text-white">
                           Registeration
                         </span>
                         <span className="d-block d-sm-none">
                           <i className="tim-icons icon-gift-2" />
                         </span>
-                    </NavLink>
+                      </NavLink>
                     </ButtonGroup>
                   </Col>
                 </Row>

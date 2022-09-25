@@ -24,119 +24,93 @@ function UserProfile() {
           <Col md="8">
             <Card>
               <CardHeader>
-                <h5 className="title">Edit Profile</h5>
+
+                <div className="row">
+                  <div className="col-md-6"><h5 className="title">Edit Profile</h5></div>
+                  <div className="col-md-6">
+                    <button className="btn btn-secondary" >Event History</button>
+                    <button className="btn btn-secondary" >Club History</button>
+                  </div>
+                </div>
               </CardHeader>
               <CardBody>
-                <Form>
-                  <Row>
-                    <Col className="pr-md-1" md="5">
-                      <FormGroup>
-                        <label>Company (disabled)</label>
-                        <Input
-                          defaultValue="Creative Code Inc."
-                          disabled
-                          placeholder="Company"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col className="px-md-1" md="3">
-                      <FormGroup>
-                        <label>Username</label>
-                        <Input
-                          defaultValue="michael23"
-                          placeholder="Username"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col className="pl-md-1" md="4">
-                      <FormGroup>
-                        <label htmlFor="exampleInputEmail1">
-                          Email address
-                        </label>
-                        <Input placeholder="mike@email.com" type="email" />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col className="pr-md-1" md="6">
-                      <FormGroup>
-                        <label>First Name</label>
-                        <Input
-                          defaultValue="Mike"
-                          placeholder="Company"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col className="pl-md-1" md="6">
-                      <FormGroup>
-                        <label>Last Name</label>
-                        <Input
-                          defaultValue="Andrew"
-                          placeholder="Last Name"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md="12">
-                      <FormGroup>
-                        <label>Address</label>
-                        <Input
-                          defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                          placeholder="Home Address"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col className="pr-md-1" md="4">
-                      <FormGroup>
-                        <label>City</label>
-                        <Input
-                          defaultValue="Mike"
-                          placeholder="City"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col className="px-md-1" md="4">
-                      <FormGroup>
-                        <label>Country</label>
-                        <Input
-                          defaultValue="Andrew"
-                          placeholder="Country"
-                          type="text"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col className="pl-md-1" md="4">
-                      <FormGroup>
-                        <label>Postal Code</label>
-                        <Input placeholder="ZIP Code" type="number" />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md="8">
-                      <FormGroup>
-                        <label>About Me</label>
-                        <Input
-                          cols="80"
-                          defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                            that two seat Lambo."
-                          placeholder="Here can be your description"
-                          rows="4"
-                          type="textarea"
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                </Form>
+                <Row className="justify-content-center mt-3">
+                  <Col md="8">
+                    <Form>
+                      <Row>
+                        <Col className="pr-md-1" md="6">
+                          <FormGroup>
+                            <label>Employee Code</label>
+                            <Input
+                              defaultValue="Employee Code"
+                              placeholder="E-001"
+                              type="text"
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col className="px-md-1" md="6">
+                          <FormGroup>
+                            <label>EMail</label>
+                            <Input
+                              defaultValue="Email"
+                              placeholder="Enter Your Email"
+                              type="email"
+                            />
+                          </FormGroup>
+                        </Col>
+
+                      </Row>
+                      <Row>
+                        <Col className="pr-md-1" md="6">
+                          <FormGroup>
+                            <label>First Name</label>
+                            <Input
+                              placeholder="Enter Your First Name"
+                              type="text"
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col className="pl-md-1" md="6">
+                          <FormGroup>
+                            <label>Last Name</label>
+                            <Input
+
+                              placeholder="Enter Your Last Name"
+                              type="text"
+                            />
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="12">
+                          <FormGroup>
+                            <label>Address</label>
+                            <Input
+
+                              placeholder="Home Address"
+                              type="text"
+                            />
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col className="pr-md-1" md="6">
+                          <FormGroup>
+                            <label>Mobile No</label>
+                            <Input
+
+                              placeholder="Mobile Number"
+                              type="number"
+                            />
+                          </FormGroup>
+                        </Col>
+
+                      </Row>
+
+                    </Form>
+                  </Col>
+                </Row>
+
               </CardBody>
               <CardFooter>
                 <Button className="btn-fill" color="primary" type="submit">
@@ -145,6 +119,8 @@ function UserProfile() {
               </CardFooter>
             </Card>
           </Col>
+
+
           <Col md="4">
             <Card className="card-user">
               <CardBody>
@@ -170,7 +146,7 @@ function UserProfile() {
                   Kanye I love Rick Owens’ bed design but the back is...
                 </div>
               </CardBody>
-              <CardFooter>
+              {/* <CardFooter>
                 <div className="button-container">
                   <Button className="btn-icon btn-round" color="facebook">
                     <i className="fab fa-facebook" />
@@ -182,7 +158,7 @@ function UserProfile() {
                     <i className="fab fa-google-plus" />
                   </Button>
                 </div>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </Col>
         </Row>

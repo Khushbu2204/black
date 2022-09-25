@@ -23,7 +23,7 @@ root.render(
         <Switch>
           <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
           <Route path="/rtl" render={(props) => <RTLLayout {...props} />} />
-          <Redirect from="/" to="/admin/dashboard" />
+          <Redirect from="/" to="/admin/Login" />
         </Switch>
       </BrowserRouter>
     </BackgroundColorWrapper>

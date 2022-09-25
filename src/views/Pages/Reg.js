@@ -1,6 +1,9 @@
 import React from "react";
 import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { useState } from "react";
+
 
 // reactstrap components
 import {
@@ -40,6 +43,7 @@ const LoginSchema = Yup.object().shape({
   address: Yup.string()
     .required("Address is required")
     .min(4, "Address must be 4 characters at minimum"),
+
   confirm_password: Yup.string()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/,
@@ -51,9 +55,40 @@ const LoginSchema = Yup.object().shape({
     /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
     "Min 10 digits."
   ),
+  Emp_code: Yup.string()
+    .required("Employee Code is required")
+    .min(4, "Employee Code must be 4 characters at minimum"),
 });
 
+
 function Registration() {
+  const [first_name, setFirstname] = useState("");
+  const [last_name, setLastname] = useState("");
+  const [emp_code, setEmpcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [date_of_Birth, setDob] = useState("");
+  const [date_of_Joining, setDoj] = useState("");
+  const [contact_no, setContactno] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
+const [user,setUser] = useState();
+
+
+  const handleReg = async (e) => {
+     e.preventDefault();
+     alert("submit");
+     const user = { first_name, last_name,emp_code,address,date_of_Birth,date_of_Joining,contact_no,email,password };
+    console.log(user);
+     const response = await axios.post(
+      "http://localhost:8080/register",
+      user
+     );
+     setUser(response.data);
+     console.log(response.data);
+  };
+
+
   return (
     <>
       <div className="content">
@@ -75,6 +110,7 @@ function Registration() {
                     password: "",
                     confirm_password: "",
                     contact_no: "",
+                    Emp_code: "",
                   }}
                   validationSchema={LoginSchema}
                   onSubmit={(values) => {
@@ -86,19 +122,20 @@ function Registration() {
                     !isSubmitting ? (
                       <Form>
                         <Row>
-                          <Col className="pr-md-1" md="5">
+                          <Col className="pr-md-1" md="6">
                             <FormGroup>
                               <label>First Name</label>
                               <Field
                                 className={`mt-2 form-control
-                        ${
-                          touched.first_name && errors.first_name
-                            ? "is-invalid"
-                            : ""
-                        }`}
+                        ${touched.First_name && errors.First_name
+                                    ? "is-invalid"
+                                    : ""
+                                  }`}
                                 name="first_name"
                                 placeholder="First Name"
                                 type="text"
+                                onChange={e => setFirstname(e.target.value)}
+                                value={first_name}
                               />
                               <ErrorMessage
                                 component="div"
@@ -107,19 +144,20 @@ function Registration() {
                               />
                             </FormGroup>
                           </Col>
-                          <Col className="px-md-1" md="3">
+                          <Col className="px-md-1" md="6">
                             <FormGroup>
                               <label>Last Name</label>
                               <Field
                                 placeholder="Last Name"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${
-                          touched.last_name && errors.last_name
-                            ? "is-invalid"
-                            : ""
-                        }`}
+                        ${touched.Last_name && errors.Last_name
+                                    ? "is-invalid"
+                                    : ""
+                                  }`}
                                 name="last_name"
+                                onChange={e => setLastname(e.target.value)}
+                                value={last_name}
                               />
                               <ErrorMessage
                                 component="div"
@@ -128,26 +166,44 @@ function Registration() {
                               />
                             </FormGroup>
                           </Col>
-                          <Col className="pl-md-1" md="4">
+
+                          <Col className="pr-md-1" md="6">
                             <FormGroup>
-                              <label htmlFor="exampleInputEmail1">
-                                Email address
-                              </label>
+                              <label>Emp code</label>
                               <Field
-                                placeholder="mike@email.com"
-                                type="email"
+                                placeholder="Emp code"
+                                type="text"
                                 className={`mt-2 form-control
-                        ${touched.email && errors.email ? "is-invalid" : ""}`}
-                                name="email"
+                        ${touched.Emp_code && errors.Emp_code
+                                    ? "is-invalid"
+                                    : ""
+                                  }`}
+                                name="emp_code"
+                                onChange={e => setEmpcode(e.target.value)}
+                                value={emp_code}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="email"
+                                name="emp_code"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
                           </Col>
+
                         </Row>
+                        {/* <Row>
+                          <col md="6">
+                            <FormGroup>
+                              <label>Emp_code</label>
+                              <Field
+                                placeholder="Employee Code"
+                                type="text"
+
+                                name="" />
+                            </FormGroup>
+                          </col>
+                        </Row> */}
+
                         <Row>
                           <Col md="12">
                             <FormGroup>
@@ -156,10 +212,11 @@ function Registration() {
                                 placeholder="Home Address"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${
-                          touched.address && errors.address ? "is-invalid" : ""
-                        }`}
+                        ${touched.address && errors.address ? "is-invalid" : ""
+                                  }`}
                                 name="address"
+                                onChange={e => setAddress(e.target.value)}
+                                value={address}
                               />
                               <ErrorMessage
                                 component="div"
@@ -170,57 +227,85 @@ function Registration() {
                           </Col>
                         </Row>
                         <Row>
-                          <Col className="pr-md-1" md="4">
+                          <Col className="pr-md-1" md="6">
                             <FormGroup>
                               <label>Date Of Birth</label>
                               <Field
                                 placeholder="DOB"
                                 type="date"
                                 className={`mt-2 form-control
-                        ${touched.dob && errors.dob ? "is-invalid" : ""}`}
-                                name="dob"
+                        ${touched.Date_of_Birth && errors.Date_of_Birth ? "is-invalid" : ""}`}
+                                name="date_of_Birth"
+                                onChange={e => setDob(e.target.value)}
+                                value={date_of_Birth}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="dob"
+                                name="date_of_Birth"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
                           </Col>
-                          <Col className="pr-md-1" md="4">
+                          <Col className="pr-md-1" md="6">
                             <FormGroup>
                               <label>Date Of Joining</label>
                               <Field
                                 placeholder="DOJ"
                                 type="date"
                                 className={`mt-2 form-control
-                        ${touched.doj && errors.doj ? "is-invalid" : ""}`}
-                                name="doj"
+                        ${touched.Date_of_Joining && errors.Date_of_Joining ? "is-invalid" : ""}`}
+                                name="date_of_Joining"
+                                onChange={e => setDoj(e.target.value)}
+                                value={date_of_Joining}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="doj"
+                                name="date_of_Joining"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
                           </Col>
-                          <Col className="px-md-1" md="4">
+                        </Row>
+                        <Row>
+                          <Col className="pr-md-1" md="6">
                             <FormGroup>
                               <label>Contact No.</label>
                               <Field
                                 placeholder="Contact No."
                                 type="text"
                                 className={`mt-2 form-control
-                        ${
-                          touched.contact_no && errors.contact_no
-                            ? "is-invalid"
-                            : ""
-                        }`}
+                        ${touched.Contact_no && errors.Contact_no
+                                    ? "is-invalid"
+                                    : ""
+                                  }`}
                                 name="contact_no"
+                                onChange={e => setContactno(e.target.value)}
+                                value={contact_no}
                               />
                               <ErrorMessage
                                 component="div"
                                 name="contact_no"
+                                className="invalid-feedback"
+                              />
+                            </FormGroup>
+                          </Col>
+                          <Col className="pr-md-1" md="6">
+                            <FormGroup>
+                              <label htmlFor="exampleInputEmail1">
+                                Email address
+                              </label>
+                              <Field
+                                placeholder="mike@email.com"
+                                type="email"
+                                className={`mt-2 form-control
+                        ${touched.E_mail && errors.E_mail ? "is-invalid" : ""}`}
+                                name="email"
+                                onChange={e => setEmail(e.target.value)}
+                                value={email}
+                              />
+                              <ErrorMessage
+                                component="div"
+                                name="email"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -236,6 +321,8 @@ function Registration() {
                                 placeholder="Enter password"
                                 className={`mt-2 form-control
 						${touched.password && errors.password ? "is-invalid" : ""}`}
+                                onChange={e => setPassword(e.target.value)}
+                                value={password}
                               />
                               <ErrorMessage
                                 component="div"
@@ -251,12 +338,13 @@ function Registration() {
                                 placeholder="confirm password"
                                 type="password"
                                 className={`mt-2 form-control
-                        ${
-                          touched.confirm_password && errors.confirm_password
-                            ? "is-invalid"
-                            : ""
-                        }`}
+                        ${touched.confirm_password && errors.confirm_password
+                                    ? "is-invalid"
+                                    : ""
+                                  }`}
                                 name="confirm_password"
+                                onChange={e => setConfirmPassword(e.target.value)}
+                                value={confirm_password}
                               />
                               <ErrorMessage
                                 component="div"
@@ -288,7 +376,7 @@ function Registration() {
                 </Formik>
               </CardBody>
               <CardFooter>
-                <Button className="btn-fill" color="primary" type="submit">
+                <Button className="btn-fill" color="primary" onClick={handleReg}>
                   Submit
                 </Button>
               </CardFooter>

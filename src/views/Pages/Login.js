@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.css";
@@ -7,44 +8,44 @@ import { Input } from "reactstrap";
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string()
-    .required("Username is required")
+    .required()
     .min(4, "Username must be 4 characters at minimum"),
   password: Yup.string()
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/,
-      "Min 1 uppercase letter, Min 1 lowercase letter, Min 1 special character, Min 1 number, Min 8 characters, Max 20 characters."
+      //"Min 1 uppercase letter, Min 1 lowercase letter, Min 1 special character, Min 1 number, Min 8 characters, Max 20 characters."
     )
-    .required("Password is required"),
+    .required(),
 });
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
-  
-  // const handleSubmit = async (e) => {
-  //   alert("submit");
-  //   e.preventDefault();
-  //   const user = { username, password };
-  //   console.log(uname);
-  //   // send the username and password to the server
-  //   const response = await axios.post(
-  //     "http://blogservice.herokuapp.com/api/login",
-  //     user
-  //   );
-  //   // set the state of the user
-  //   setUser(response.data);
-  //   // store the user in localStorage
-  //   localStorage.setItem("user", response.data);
-  //   console.log(response.data);
-  // };
 
-  const handleSubmit = ()=>{
+  const handleSubmit = async (e) => {
     alert("submit");
+    e.preventDefault();
     const user = { username, password };
-    localStorage.setItem("user", user);
-    console.log("uname:"+user)
-  }
+    // console.log(username);
+    // send the username and password to the server
+    const response = await axios.post(
+      "http://localhost:8080/login",
+      user
+    );
+    // set the state of the user
+    setUser(response.data);
+    // store the user in localStorage
+    localStorage.setItem("user", response.data);
+    console.log(response.data);
+  };
+
+  /* const handleSubmit = ()=>{
+     alert("submit");
+     const user = { username, password };
+     localStorage.setItem("user", user);
+     console.log("uname:"+user)
+   }*/
   return (
     <div className="container">
       <div className="row justify-content-md-center">
@@ -75,7 +76,7 @@ function Login() {
                         className={`mt-2 form-control
 						${touched.username && errors.username ? "is-invalid" : ""}`}
                         // onChange={({ target }) => setUsername(target.value)}
-						onChange={e => setUsername(e.target.value)}
+                        onChange={e => setUsername(e.target.value)}
                         value={username}
                       />
 
@@ -97,8 +98,8 @@ function Login() {
                         placeholder="Enter password"
                         className={`mt-2 form-control
 						${touched.password && errors.password ? "is-invalid" : ""}`}
-                        // onChange={({ target }) => setPassword(target.value)}
-						onChange={e => setPassword(e.target.value)}
+                        //onChange={({ target }) => setPassword(target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         value={password}
                       />
                       <ErrorMessage
@@ -107,13 +108,17 @@ function Login() {
                         className="invalid-feedback"
                       />
                     </div>
-
                     <button
                       type="submit"
                       className="btn btn-primary btn-block mt-4"
                     >
                       Login
                     </button>
+                    <div className="row mt-3">
+                      <div className="col-6"> <Link to="register">Register</Link>
+                      </div>
+                      <div className="col-6 mr-0"> <p>Forgot Password</p></div>
+                    </div>
                   </Form>
                 </div>
               ) : (
@@ -141,3 +146,4 @@ function Login() {
 }
 
 export default Login;
+
