@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import AdminLayout from "layouts/Admin/Admin.js";
+import EmployeeLayout from "layouts/Employee/Employee";
+import SuperAdminLayout from "layouts/SuperAdmin/SuperAdmin.js";
 import RTLLayout from "layouts/RTL/RTL.js";
 
 import "assets/scss/black-dashboard-react.scss";
@@ -30,14 +32,15 @@ root.render(
           <Route
             render={(props) =>
               localStorage.getItem("user") ? (
-                <AdminLayout {...props} />
+                // <AdminLayout {...props} />
+                <EmployeeLayout {...props} />
               ) : (
                 <Redirect to="/login" />
               )
             }
           />
           <Route path="/rtl" render={(props) => <RTLLayout {...props} />} />
-          <Redirect from="/" to="/admin" />
+          {/* <Redirect from="/" to="/admin" /> */}
         </Switch>
       </BrowserRouter>
     </BackgroundColorWrapper>
