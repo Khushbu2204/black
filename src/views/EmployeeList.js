@@ -12,16 +12,16 @@ import {
   Col,
 } from "reactstrap";
 
-function EventList() {
-  const [events, setEvents] = useState([]);
+function EmployeeList() {
+  const [employee, setEmployee] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) =>setEvents(response.data));
+      .then((response) =>setEmployee(response.data));
   }, []);
 
-  console.log(events);
+  console.log(employee);
   return (
     <>
       <div className="content">
@@ -30,27 +30,27 @@ function EventList() {
             <Card>
               <CardHeader>
                 <CardTitle tag="h1" className="justify-content-center mt-3">
-                  Event List
+                  Employees List
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <Table className="tablesorter" responsive>
                   <thead className="text-primary">
                     <tr>
-                      <th>Event Id</th>
-                      <th>Event Name</th>
-                      <th>Description</th>
-                      <th className="text-center">Date</th>
-                      <th>Starting Time</th>
-                      <th>End Time</th>
-                      <th>Club Id</th>
-                      <th>Register</th>
+                      <th>Emp Id</th>
+                      <th>Employee Name</th>
+                      <th>Contact No</th>
+                      <th className="text-center">Address</th>
+                      <th>dob</th>
+                      <th>Email</th>
+                      <th>Gender</th>
+                      
                     </tr>
                   </thead>
-                  {events.map((event) => (
+                  {employee.map((employee) => (
                     <tbody>
                       <tr>
-                        <td>{event.title}</td>
+                        <td>{employee.title}</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
                         <td className="text-center">$36,738</td>
@@ -67,4 +67,4 @@ function EventList() {
   );
 }
 
-export default EventList;
+export default EmployeeList;

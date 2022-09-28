@@ -12,16 +12,16 @@ import {
   Col,
 } from "reactstrap";
 
-function EventList() {
-  const [events, setEvents] = useState([]);
+function SAClubList() {
+  const [clubs, setClubData] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) =>setEvents(response.data));
+      .then((response) =>setClubData(response.data));
   }, []);
 
-  console.log(events);
+  console.log(clubs);
   return (
     <>
       <div className="content">
@@ -30,27 +30,23 @@ function EventList() {
             <Card>
               <CardHeader>
                 <CardTitle tag="h1" className="justify-content-center mt-3">
-                  Event List
+                  Club List
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <Table className="tablesorter" responsive>
                   <thead className="text-primary">
                     <tr>
-                      <th>Event Id</th>
-                      <th>Event Name</th>
-                      <th>Description</th>
-                      <th className="text-center">Date</th>
-                      <th>Starting Time</th>
-                      <th>End Time</th>
                       <th>Club Id</th>
-                      <th>Register</th>
+                      <th>Club Name</th>
+                      <th>category</th>
+                      <th className="text-center">Admin</th>
                     </tr>
                   </thead>
-                  {events.map((event) => (
+                  {clubs.map((club) => (
                     <tbody>
                       <tr>
-                        <td>{event.title}</td>
+                        <td>{club.title}</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
                         <td className="text-center">$36,738</td>
@@ -67,4 +63,4 @@ function EventList() {
   );
 }
 
-export default EventList;
+export default SAClubList;

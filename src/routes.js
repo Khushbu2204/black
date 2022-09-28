@@ -10,6 +10,13 @@ import UserLogin from "views/Pages/Login.js";
 import UserRegisterations from "views/Pages/Reg.js";
 import Eventhistory from "views/EventHistory";
 import Resetpass from "views/Pages/Resetpass";
+import ClubList from "views/ClubList";
+import EventList from "views/EventList";
+import ClubRegistration from "views/ClubRegister";
+import EventRegistration from "views/EventRegister";
+import EmployeeList from "views/EmployeeList";
+import AddEmployee from "views/AddEmployees";
+import UpdateEmployee from "views/UpdateEmployee";
 
 var routes = [
   {
@@ -95,6 +102,60 @@ var routes = [
     name: "Reset Password",
     icon: "tim-icons icon-align-center",
     component: Resetpass,
+    layout: "/admin"
+  },
+  {
+    path: "/club-list",
+    name: "Club List",
+    icon: "tim-icons icon-align-center",
+    component: ClubList,
+    layout: "/admin"
+  },
+  {
+    path: "/event-list",
+    name: "event List",
+    icon: "tim-icons icon-align-center",
+    component: EventList,
+    layout: "/admin"
+  },
+  {
+    path: "/club-register",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: ClubRegistration,
+    layout: "/admin"
+  },
+  {
+    path: "/event-register",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: EventRegistration,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-list",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: EmployeeList,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-add",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: AddEmployee,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-update",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: UpdateEmployee,
     layout: "/admin"
   },
 ];
