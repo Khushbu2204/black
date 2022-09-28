@@ -18,7 +18,7 @@ const LoginSchema = Yup.object().shape({
     .required(),
 });
 
-function Login() {
+function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
@@ -27,25 +27,23 @@ function Login() {
     alert("submit");
     e.preventDefault();
     const user = { username, password };
-    // console.log(username);
-    // send the username and password to the server
-    const response = await axios.post(
-      "http://localhost:8080/login",
-      user
-    );
-    // set the state of the user
-    setUser(response.data);
-    // store the user in localStorage
-    localStorage.setItem("user", response.data);
-    console.log(response.data);
+    localStorage.setItem("user", user);
+    let logedIn = localStorage.getItem("user");
+    console.log(logedIn);
+    
+    console.log(user);
+    if(logedIn){
+      props.history.push("/admin");
+    }
+    // const response = await axios.post(
+    //   "http://localhost:8080/login",
+    //   user
+    // );
+    // setUser(response.data);
+    // // localStorage.setItem("user", response.data);
+    // console.log(response.data);
   };
 
-  /* const handleSubmit = ()=>{
-     alert("submit");
-     const user = { username, password };
-     localStorage.setItem("user", user);
-     console.log("uname:"+user)
-   }*/
   return (
     <div className="container">
       <div className="row justify-content-md-center">

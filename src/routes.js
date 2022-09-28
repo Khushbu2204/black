@@ -6,7 +6,6 @@ import Notifications from "views/Notifications.js";
 import Tables from "views/ClubHistory";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
-import UserLogin from "views/Pages/Login.js";
 import UserRegisterations from "views/Pages/Reg.js";
 import Eventhistory from "views/EventHistory";
 import Resetpass from "views/Pages/Resetpass";
@@ -82,20 +81,12 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/login",
-    // name: "Login",
-    // rtlName: "Login",
-    // icon: "tim-icons icon-badge",
-    component: UserLogin,
-    layout: "/admin"
-  },
-  {
     path: "/register",
     // name: "Registration",
     // rtlName: "Registration",
     // icon: "tim-icons icon-badge",
     component: UserRegisterations,
-    layout: "/admin"
+    // layout: "/admin"
   },
   {
     path: "/reset-password",
