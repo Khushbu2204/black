@@ -1,5 +1,6 @@
 
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 // reactstrap components
 import {
@@ -24,12 +25,21 @@ function UserProfile() {
           <Col md="8">
             <Card>
               <CardHeader>
-
                 <div className="row">
                   <div className="col-md-6"><h5 className="title">Edit Profile</h5></div>
                   <div className="col-md-6">
-                    <button className="btn btn-secondary" >Event History</button>
-                    <button className="btn btn-secondary" >Club History</button>
+                    <NavLink
+                        to={'event-history'}
+                        className="btn btn-secondary"
+                      >
+                        Event History
+                      </NavLink>
+                      <NavLink
+                        to={'club-history'}
+                        className="btn btn-secondary"
+                      >
+                        Club History
+                      </NavLink>
                   </div>
                 </div>
               </CardHeader>

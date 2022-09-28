@@ -15,6 +15,7 @@ import {
 function Login(props) {
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
+  //  const [role, setrole] = useState("");
   // const [user, setUser] = useState();
   // formik validations
   const validate = (values) => {
@@ -52,6 +53,7 @@ function Login(props) {
   //       props.history.push("/admin");
   //     }
   //   }
+  //role (response)
 
   //   // const response = await axios.post(
   //   //   "http://localhost:8080/login",

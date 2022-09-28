@@ -32,8 +32,8 @@ root.render(
           <Route
             render={(props) =>
               localStorage.getItem("user") ? (
-                // <AdminLayout {...props} />
-                <EmployeeLayout {...props} />
+                <AdminLayout {...props} />
+                // <EmployeeLayout {...props} />
               ) : (
                 <Redirect to="/login" />
               )
