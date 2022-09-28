@@ -1,20 +1,27 @@
 import Dashboard from "views/admin/Dashboard.js";
-import Icons from "views/admin/Icons.js";
+
 import Map from "views/admin/Map.js";
 import Notifications from "views/admin/Notifications.js";
 // import Rtl from "views/Rtl.js";
 import Tables from "views/admin/ClubHistory";
-import Typography from "views/admin/Typography.js";
+
 import UserProfile from "views/Pages/UserProfile.js";
 import UserRegisterations from "views/Pages/Reg.js";
 import Eventhistory from "views/admin/EventHistory";
 import Resetpass from "views/Pages/Resetpass";
+import ClubList from "views/ClubList";
+import EventList from "views/EventList";
+import ClubRegistration from "views/ClubRegister";
+import EventRegistration from "views/EventRegister";
+import EmployeeList from "views/EmployeeList";
+import AddEmployee from "views/AddEmployees";
+import UpdateEmployee from "views/UpdateEmployee";
 
 //Empolyee Module Definition
 import EmpDashboard from "views/employee/Dashboard.js";
 import EmpEventhistory from "views/employee/EventHistory";
 import EmpClubhistory from "views/employee/ClubHistory";
-import EmpEventList from "views/employee/EventList";
+import EmpEvent from "views/employee/EventList";
 import EmpClubList from "views/employee/ClubList";
 
 
@@ -27,14 +34,7 @@ var routes = [
     component: Dashboard,
     layout: "/admin"
   },
-  {
-    path: "/icons",
-    name: "Icons",
-    rtlName: "الرموز",
-    icon: "tim-icons icon-atom",
-    component: Icons,
-    layout: "/admin"
-  },
+  
   // {
   //   path: "/map",
   //   name: "Map",
@@ -60,20 +60,27 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/club-history",
-    name: "Club History",
-    icon: "tim-icons icon-puzzle-10",
-    component: Tables,
+    path: "/club-list",
+    name: "Club List",
+    icon: "tim-icons icon-align-center",
+    component: ClubList,
     layout: "/admin"
   },
   {
-    path: "/typography",
-    name: "Typography",
-    rtlName: "طباعة",
+    path: "/event-list",
+    name: "event List",
     icon: "tim-icons icon-align-center",
-    component: Typography,
+    component: EventList,
     layout: "/admin"
   },
+  {
+    path: "/club-history",
+    name: "Club History",
+    icon: "tim-icons icon-align-cent",
+    component: Tables,
+    layout: "/admin"
+  },
+  
   {
     path: "/event-history",
     name: "Event History",
@@ -109,6 +116,47 @@ var routes = [
     icon: "tim-icons icon-align-center",
     component: EmpEventhistory,
     layout: "/employee"
+  },
+  
+  {
+    path: "/club-register",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: ClubRegistration,
+    layout: "/admin"
+  },
+  {
+    path: "/event-register",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: EventRegistration,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-list",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: EmployeeList,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-add",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: AddEmployee,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-update",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: UpdateEmployee,
+    layout: "/admin"
   },
 ];
 export default routes;
