@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useState } from "react";
 
-
 // reactstrap components
 import {
   Button,
@@ -60,7 +59,6 @@ const LoginSchema = Yup.object().shape({
     .min(4, "Employee Code must be 4 characters at minimum"),
 });
 
-
 function Registration() {
   const [first_name, setFirstname] = useState("");
   const [last_name, setLastname] = useState("");
@@ -72,22 +70,30 @@ function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
-const [user,setUser] = useState();
-
+  const [user, setUser] = useState();
 
   const handleReg = async (e) => {
-     e.preventDefault();
-     alert("submit");
-     const user = { first_name, last_name,emp_code,address,date_of_Birth,date_of_Joining,contact_no,email,password };
+    e.preventDefault();
+    alert("submit");
+    const user = {
+      first_name,
+      last_name,
+      emp_code,
+      address,
+      date_of_Birth,
+      date_of_Joining,
+      contact_no,
+      email,
+      password,
+    };
     console.log(user);
-     const response = await axios.post(
-      "http://localhost:8080/register",
+    const response = await axios.post(
+      "http://localhost:8080/employee/register",
       user
-     );
-     setUser(response.data);
-     console.log(response.data);
+    );
+    setUser(response.data);
+    console.log(response.data);
   };
-
 
   return (
     <>
@@ -127,14 +133,15 @@ const [user,setUser] = useState();
                               <label>First Name</label>
                               <Field
                                 className={`mt-2 form-control
-                        ${touched.First_name && errors.First_name
-                                    ? "is-invalid"
-                                    : ""
-                                  }`}
+                        ${
+                          touched.First_name && errors.First_name
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="first_name"
                                 placeholder="First Name"
                                 type="text"
-                                onChange={e => setFirstname(e.target.value)}
+                                onChange={(e) => setFirstname(e.target.value)}
                                 value={first_name}
                               />
                               <ErrorMessage
@@ -151,12 +158,13 @@ const [user,setUser] = useState();
                                 placeholder="Last Name"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.Last_name && errors.Last_name
-                                    ? "is-invalid"
-                                    : ""
-                                  }`}
+                        ${
+                          touched.Last_name && errors.Last_name
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="last_name"
-                                onChange={e => setLastname(e.target.value)}
+                                onChange={(e) => setLastname(e.target.value)}
                                 value={last_name}
                               />
                               <ErrorMessage
@@ -174,12 +182,13 @@ const [user,setUser] = useState();
                                 placeholder="Emp code"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.Emp_code && errors.Emp_code
-                                    ? "is-invalid"
-                                    : ""
-                                  }`}
+                        ${
+                          touched.Emp_code && errors.Emp_code
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="emp_code"
-                                onChange={e => setEmpcode(e.target.value)}
+                                onChange={(e) => setEmpcode(e.target.value)}
                                 value={emp_code}
                               />
                               <ErrorMessage
@@ -189,7 +198,6 @@ const [user,setUser] = useState();
                               />
                             </FormGroup>
                           </Col>
-
                         </Row>
                         {/* <Row>
                           <col md="6">
@@ -212,10 +220,11 @@ const [user,setUser] = useState();
                                 placeholder="Home Address"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.address && errors.address ? "is-invalid" : ""
-                                  }`}
+                        ${
+                          touched.address && errors.address ? "is-invalid" : ""
+                        }`}
                                 name="address"
-                                onChange={e => setAddress(e.target.value)}
+                                onChange={(e) => setAddress(e.target.value)}
                                 value={address}
                               />
                               <ErrorMessage
@@ -234,9 +243,13 @@ const [user,setUser] = useState();
                                 placeholder="DOB"
                                 type="date"
                                 className={`mt-2 form-control
-                        ${touched.Date_of_Birth && errors.Date_of_Birth ? "is-invalid" : ""}`}
+                        ${
+                          touched.Date_of_Birth && errors.Date_of_Birth
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="date_of_Birth"
-                                onChange={e => setDob(e.target.value)}
+                                onChange={(e) => setDob(e.target.value)}
                                 value={date_of_Birth}
                               />
                               <ErrorMessage
@@ -253,9 +266,13 @@ const [user,setUser] = useState();
                                 placeholder="DOJ"
                                 type="date"
                                 className={`mt-2 form-control
-                        ${touched.Date_of_Joining && errors.Date_of_Joining ? "is-invalid" : ""}`}
+                        ${
+                          touched.Date_of_Joining && errors.Date_of_Joining
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="date_of_Joining"
-                                onChange={e => setDoj(e.target.value)}
+                                onChange={(e) => setDoj(e.target.value)}
                                 value={date_of_Joining}
                               />
                               <ErrorMessage
@@ -274,12 +291,13 @@ const [user,setUser] = useState();
                                 placeholder="Contact No."
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.Contact_no && errors.Contact_no
-                                    ? "is-invalid"
-                                    : ""
-                                  }`}
+                        ${
+                          touched.Contact_no && errors.Contact_no
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="contact_no"
-                                onChange={e => setContactno(e.target.value)}
+                                onChange={(e) => setContactno(e.target.value)}
                                 value={contact_no}
                               />
                               <ErrorMessage
@@ -300,7 +318,7 @@ const [user,setUser] = useState();
                                 className={`mt-2 form-control
                         ${touched.E_mail && errors.E_mail ? "is-invalid" : ""}`}
                                 name="email"
-                                onChange={e => setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 value={email}
                               />
                               <ErrorMessage
@@ -321,7 +339,7 @@ const [user,setUser] = useState();
                                 placeholder="Enter password"
                                 className={`mt-2 form-control
 						${touched.password && errors.password ? "is-invalid" : ""}`}
-                                onChange={e => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                                 value={password}
                               />
                               <ErrorMessage
@@ -338,12 +356,15 @@ const [user,setUser] = useState();
                                 placeholder="confirm password"
                                 type="password"
                                 className={`mt-2 form-control
-                        ${touched.confirm_password && errors.confirm_password
-                                    ? "is-invalid"
-                                    : ""
-                                  }`}
+                        ${
+                          touched.confirm_password && errors.confirm_password
+                            ? "is-invalid"
+                            : ""
+                        }`}
                                 name="confirm_password"
-                                onChange={e => setConfirmPassword(e.target.value)}
+                                onChange={(e) =>
+                                  setConfirmPassword(e.target.value)
+                                }
                                 value={confirm_password}
                               />
                               <ErrorMessage
@@ -376,7 +397,11 @@ const [user,setUser] = useState();
                 </Formik>
               </CardBody>
               <CardFooter>
-                <Button className="btn-fill" color="primary" onClick={handleReg}>
+                <Button
+                  className="btn-fill"
+                  color="primary"
+                  onClick={handleReg}
+                >
                   Submit
                 </Button>
               </CardFooter>

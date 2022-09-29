@@ -17,7 +17,7 @@ function EventList() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://localhost:8080/event/list")
       .then((response) =>setEvents(response.data));
   }, []);
 
@@ -50,7 +50,7 @@ function EventList() {
                   {events.map((event) => (
                     <tbody>
                       <tr>
-                        <td>{event.title}</td>
+                        <td>{event.userId}</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
                         <td className="text-center">$36,738</td>

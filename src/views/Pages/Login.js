@@ -13,10 +13,10 @@ import {
 } from "reactstrap";
 
 function Login(props) {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  //  const [role, setrole] = useState("");
-  // const [user, setUser] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+   const [role, setrole] = useState("");
+  const [user, setUser] = useState();
   // formik validations
   const validate = (values) => {
     const errors = {};
@@ -29,41 +29,22 @@ function Login(props) {
 
     if (!values.password) {
       errors.password = "Required";
-    } else if (
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/i.test(
-        values.password
-      )
-    ) {
-      errors.password = "Invalid password";
-    }
+    } 
+    // else if (
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,20}$/i.test(
+    //     values.password
+    //   )
+    // ) {
+    //   errors.password = "Invalid password";
+    // }
 
     return errors;
   };
 
-  // const handleSubmit = async (e) => {
-  //   alert("submit");
-  //   e.preventDefault();
-  //   const user = { username, password };
-  //   if (username && password) {
-  //     localStorage.setItem("user", user);
-  //     let logedIn = localStorage.getItem("user");
-  //     console.log(logedIn);
-  //     console.log(user);
-  //     if (logedIn) {
-  //       props.history.push("/admin");
-  //     }
-  //   }
-  //role (response)
-
-  //   // const response = await axios.post(
-  //   //   "http://localhost:8080/login",
-  //   //   user
-  //   // );
-  //   // setUser(response.data);
-  //   // // localStorage.setItem("user", response.data);
-  //   // console.log(response.data);
-  // };
-
+  //  const handleSubmit = async (e) => {
+  //    e.preventDefault();
+  //    const user = { username, password };
+    
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -71,18 +52,25 @@ function Login(props) {
     },
     validate,
     onSubmit: (values) => {
-      localStorage.setItem("user", values);
-      props.history.push("/admin");
-      // alert(JSON.stringify(values, null, 2));
-      // if (formik.u && password) {
-      //       localStorage.setItem("user", user);
-      //       let logedIn = localStorage.getItem("user");
-      //       console.log(logedIn);
-      //       console.log(user);
-      //       if (logedIn) {
-      //         props.history.push("/admin");
-      //       }
-      //     }
+      
+      let emp_code = values.username;
+      let password = values.password;
+      let user = {emp_code,password}
+
+      const res = axios.post('http://localhost:8080/employee/login',
+      {
+       emp_code: emp_code,
+       password: password 
+      }
+    )
+    .then(response => {
+      localStorage.setItem("user", user);
+      localStorage.setItem("role", response.data.role);
+        let logedIn = localStorage.getItem("user");
+            if (logedIn) {
+              props.history.push("/admin");
+            }
+    });
     },
   });
 
@@ -98,7 +86,7 @@ function Login(props) {
             </div>
             <Form noValidate onSubmit={formik.handleSubmit}>
               <FormGroup>
-                <Label for="userName">User Name</Label>
+                <Label for="userName">Emp_code</Label>
                 <Input
                   invalid={formik.errors.username}
                   id="username"
@@ -108,14 +96,14 @@ function Login(props) {
                   onBlur={formik.handleBlur}
                   value={formik.values.username}
                 />
-                <FormFeedback>Username is required</FormFeedback>
+                <FormFeedback>Employee code is required</FormFeedback>
               </FormGroup>
               <FormGroup>
-                <Label for="password">Passwords</Label>
+                <Label for="password">Password</Label>
                 <Input
                   id="password"
                   name="password"
-                  type="text"
+                  type="password"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
@@ -131,8 +119,7 @@ function Login(props) {
               <div className="row mt-3">
                 <div className="col-6">
                   {" "}
-                  <Link to="register" className="text-success">Register</Link>
-                </div>
+                  </div>
                 <div className="col-6 mr-0">
                   {" "}
                   <p>Forgot Password</p>

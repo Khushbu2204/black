@@ -17,7 +17,7 @@ function Tables() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+    .get("http://localhost:8080/club/list")
       .then((response) =>setClubData(response.data));
   }, []);
 
@@ -46,7 +46,7 @@ function Tables() {
                   {clubs.map((club) => (
                     <tbody>
                       <tr>
-                        <td>{club.title}</td>
+                        <td>{club.club_id}</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
                         <td className="text-center">$36,738</td>

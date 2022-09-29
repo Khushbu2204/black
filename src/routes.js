@@ -94,7 +94,7 @@ var routes = [
     // rtlName: "Registration",
     // icon: "tim-icons icon-badge",
     component: UserRegisterations,
-    // layout: "/admin"
+    layout: "/admin"
   },
   {
     path: "/reset-password",

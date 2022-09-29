@@ -17,7 +17,7 @@ function EventList() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://localhost:8080/event/list")
       .then((response) =>setEvents(response.data));
   }, []);
 

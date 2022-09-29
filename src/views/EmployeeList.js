@@ -17,7 +17,7 @@ function EmployeeList() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://localhost:8080/employee/list")
       .then((response) =>setEmployee(response.data));
   }, []);
 

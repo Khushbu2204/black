@@ -17,7 +17,7 @@ function SAClubList() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://localhost:8080/club/list")
       .then((response) =>setClubData(response.data));
   }, []);
 

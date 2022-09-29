@@ -79,10 +79,10 @@ function AddEmployee() {
   const handleReg = async (e) => {
      e.preventDefault();
      alert("submit");
-     const user = { first_name, last_name,emp_code,address,date_of_Birth,date_of_Joining,contact_no,email,password,gender,role};
+     const user = { first_name, last_name,emp_code,address,date_of_Birth,date_of_Joining,contact_no,email,gender,password,role};
     console.log(user);
      const response = await axios.post(
-      "http://localhost:8080/register",
+      "http://localhost:8080/employee/register",
       user
      );
      setUser(response.data);
@@ -109,7 +109,7 @@ function AddEmployee() {
                     doj: "",
                     address: "",
                     password: "",
-                    gender: "",
+                   // gender: "",
                     contact_no: "",
                     Emp_code: "",
                     role:"",
@@ -248,7 +248,7 @@ function AddEmployee() {
                                 className="invalid-feedback"
                               />
                             </FormGroup>
-                          </Col>
+                                </Col>
                           <Col className="pr-md-1" md="6">
                             <FormGroup>
                               <label>Role</label>

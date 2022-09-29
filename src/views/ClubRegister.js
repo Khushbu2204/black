@@ -56,7 +56,7 @@ const [user,setUser] = useState();
      const user = { first_name, last_name,emp_code,contact_no,email };
     console.log(user);
      const response = await axios.post(
-      "http://localhost:8080/register",
+      "http://localhost:8080/clubparticipants/registration",
       user
      );
      setUser(response.data);

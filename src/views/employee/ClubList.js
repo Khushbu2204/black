@@ -17,8 +17,9 @@ function ClubList() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://localhost:8080/club/list")
       .then((response) =>setClubData(response.data));
+      
   }, []);
 
   console.log(clubs);
@@ -46,7 +47,7 @@ function ClubList() {
                   {clubs.map((club) => (
                     <tbody>
                       <tr>
-                        <td>{club.title}</td>
+                        <td>{club.club_id}</td>
                         <td>Niger</td>
                         <td>Oud-Turnhout</td>
                         <td className="text-center">$36,738</td>

@@ -56,7 +56,7 @@ const [user,setUser] = useState();
      const user = { club_id, club_name,date,category,admin };
     console.log(user);
      const response = await axios.post(
-      "http://localhost:8080/register",
+      "http://localhost:8080/club/add",
       user
      );
      setUser(response.data);
