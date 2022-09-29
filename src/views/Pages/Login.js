@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
+import Registration from "./Reg";
+import { NavLink } from "react-router-dom";
 import {
   Input,
   Form,
@@ -128,15 +130,17 @@ function Login(props) {
                 Login
               </button>
 
-              <div className="row mt-3">
+              <div className="row mr-3">
                 <div className="col-6">
                   {" "}
-                  <Link to="register" className="text-success">Register</Link>
+                  <NavLink
+                        to={'/register'}
+                        className="btn btn-secondary"
+                      >
+                        Forgot Password
+                      </NavLink>
                 </div>
-                <div className="col-6 mr-0">
-                  {" "}
-                  <p>Forgot Password</p>
-                </div>
+                
               </div>
             </Form>
             

@@ -23,27 +23,29 @@ const LoginSchema = Yup.object().shape({
     .required("Club Id is required")
     .min(1, "First name must be 1 characters at minimum"),
   
-  category: Yup.string()
-    .required("Category is required")
-    .min(4, "Last name must be 4 characters at minimum"),
-  club_name: Yup.string()
-    .required("Club Name is required")
-    .email(4, "Enter valid Club Name"),
+  description: Yup.string()
+    .required("Description  is required")
+    .min(4, "Description must be 4 characters at minimum"),
+  event_name: Yup.string()
+    .required("Event Name is required")
+    ,
 
-  date: Yup.string().min(4, "Date of joining must be 4 characters at minimum"),
+  start_date: Yup.string().min(4, "Date of joining must be 4 characters at minimum"),
+  end_date: Yup.string().min(4, "Date of joining must be 4 characters at minimum"),
 
-  admin: Yup.string()
-    .required("Admin is required")
-    .min(4, "Admin Name must be 4 characters at minimum"),
+  event_id: Yup.string()
+    .required("Event id is required")
+    .min(1, "Event must be 1 characters at minimum"),
 });
 
 
-function AddClub() {
+function AddEvent() {
   const [club_id, setClubid] = useState("");
-  const [club_name, setClubname] = useState("");
-  const [date, setDate] = useState("");
-  const [category, setCategory] = useState("");
-  const [admin, setAdmin] = useState("");
+  const [event_name, setEventname] = useState("");
+  const [start_date, setStartdate] = useState("");
+  const [description, setDescription] = useState("");
+  const [end_date, setEnddate] = useState("");
+  const [event_id, setEventid] = useState("");
  
 const [user,setUser] = useState();
 
@@ -51,7 +53,7 @@ const [user,setUser] = useState();
   const handleReg = async (e) => {
      e.preventDefault();
      alert("submit");
-     const user = { club_id, club_name,date,category,admin };
+     const user = { club_id, event_name,start_date,description,end_date,event_id };
     console.log(user);
      const response = await axios.post(
       "http://localhost:8080/register",
@@ -69,16 +71,17 @@ const [user,setUser] = useState();
           <Col md="8">
             <Card>
               <CardHeader>
-                <h3 className="title">Add Club </h3>
+                <h3 className="title">Add Event </h3>
               </CardHeader>
               <CardBody>
                 <Formik
                   initialValues={{
                     club_id: "",
-                    club_name: "",
-                    date: "",
-                    category: "",
-                    admin: "",
+                    event_name: "",
+                   start_date: "",
+                    description: "",
+                    end_date: "",
+                    event_id:"",
                   }}
                   validationSchema={LoginSchema}
                   onSubmit={(values) => {
@@ -114,22 +117,22 @@ const [user,setUser] = useState();
                           </Col>
                           <Col className="pr-md-1" md="6">
                             <FormGroup>
-                              <label>Club Name</label>
+                              <label>Event Name</label>
                               <Field
-                                placeholder="Club Name"
+                                placeholder="Event Name"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.club_name && errors.club_name
+                        ${touched.event_name && errors.event_name
                                     ? "is-invalid"
                                     : ""
                                   }`}
-                                name="club_name"
-                                onChange={e => setClubname(e.target.value)}
-                                value={club_name}
+                                name="event_name"
+                                onChange={e => setEventname(e.target.value)}
+                                value={event_name}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="club_name"
+                                name="event_name"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -137,18 +140,18 @@ const [user,setUser] = useState();
 
                           <Col className="pr-md-1" md="6">
                             <FormGroup>
-                              <label>Date</label>
+                              <label>Start Date</label>
                               <Field
                                 placeholder="date"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.date && errors.date
+                        ${touched.start_date && errors.start_date
                                     ? "is-invalid"
                                     : ""
                                   }`}
                                 name="date"
-                                onChange={e => setDate(e.target.value)}
-                                value={date}
+                                onChange={e => setStartdate(e.target.value)}
+                                value={start_date}
                               />
                               <ErrorMessage
                                 component="div"
@@ -177,22 +180,22 @@ const [user,setUser] = useState();
                         
                           <Col className="pr-md-1" md="6">
                             <FormGroup>
-                              <label>Category</label>
+                              <label>Description</label>
                               <Field
-                                placeholder="Category."
+                                placeholder="Description"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.category && errors.category
+                        ${touched.description && errors.description
                                     ? "is-invalid"
                                     : ""
                                   }`}
-                                name="category"
-                                onChange={e => setCategory(e.target.value)}
-                                value={category}
+                                name="Description"
+                                onChange={e => setDescription(e.target.value)}
+                                value={description}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="category"
+                                name="description"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -200,20 +203,41 @@ const [user,setUser] = useState();
                           <Col className="pr-md-1" md="6">
                             <FormGroup>
                               <label htmlFor="exampleInputEmail1">
-                                Admin
+                                End Date
                               </label>
                               <Field
-                                placeholder="Admin Name"
+                                placeholder="End Date"
                                 type="text"
                                 className={`mt-2 form-control
-                        ${touched.admin && errors.admin ? "is-invalid" : ""}`}
+                        ${touched.end_date&& errors.end_date? "is-invalid" : ""}`}
                                 name="Admin"
-                                onChange={e => setAdmin(e.target.value)}
-                                value={admin}
+                                onChange={e => setEnddate(e.target.value)}
+                                value={end_date}
                               />
                               <ErrorMessage
                                 component="div"
-                                name="Admin"
+                                name="End date"
+                                className="invalid-feedback"
+                              />
+                            </FormGroup>
+                          </Col>
+                          <Col className="pr-md-1" md="6">
+                            <FormGroup>
+                              <label htmlFor="exampleInputEmail1">
+                                Event Id
+                              </label>
+                              <Field
+                                placeholder="Event Id"
+                                type="text"
+                                className={`mt-2 form-control
+                        ${touched.event_id&& errors.event_id? "is-invalid" : ""}`}
+                                name="Event"
+                                onChange={e => setEventid(e.target.value)}
+                                value={event_id}
+                              />
+                              <ErrorMessage
+                                component="div"
+                                name="Event Id"
                                 className="invalid-feedback"
                               />
                             </FormGroup>
@@ -254,4 +278,4 @@ const [user,setUser] = useState();
   );
 }
 
-export default AddClub;
+export default AddEvent;

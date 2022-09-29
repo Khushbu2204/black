@@ -16,6 +16,9 @@ import EventRegistration from "views/EventRegister";
 import EmployeeList from "views/EmployeeList";
 import AddEmployee from "views/AddEmployees";
 import UpdateEmployee from "views/UpdateEmployee";
+import AddClub from "views/AddClub";
+import AddEvent from "views/AddEvent";
+import Participants from "views/Participants";
 
 //Empolyee Module Definition
 import EmpDashboard from "views/employee/Dashboard.js";
@@ -23,6 +26,7 @@ import EmpEventhistory from "views/employee/EventHistory";
 import EmpClubhistory from "views/employee/ClubHistory";
 import EmpEvent from "views/employee/EventList";
 import EmpClubList from "views/employee/ClubList";
+
 
 
 var routes = [
@@ -76,7 +80,7 @@ var routes = [
   {
     path: "/club-history",
     name: "Club History",
-    icon: "tim-icons icon-align-cent",
+    icon: "tim-icons icon-align-center",
     component: Tables,
     layout: "/admin"
   },
@@ -156,6 +160,30 @@ var routes = [
     // rtlName: "Registration",
     // icon: "tim-icons icon-badge",
     component: UpdateEmployee,
+    layout: "/admin"
+  },
+  {
+    path: "/add-club",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: AddClub,
+    layout: "/admin"
+  },
+  {
+    path: "/add-event",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: AddEvent,
+    layout: "/admin"
+  },
+  {
+    path: "/participant-list",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: Participants,
     layout: "/admin"
   },
 ];
