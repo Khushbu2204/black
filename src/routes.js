@@ -9,13 +9,13 @@ import UserProfile from "views/Pages/UserProfile.js";
 import UserRegisterations from "views/Pages/Reg.js";
 import Eventhistory from "views/admin/EventHistory";
 import Resetpass from "views/Pages/Resetpass";
-import ClubList from "views/ClubList";
-import EventList from "views/EventList";
-import ClubRegistration from "views/ClubRegister";
-import EventRegistration from "views/EventRegister";
-import EmployeeList from "views/EmployeeList";
-import AddEmployee from "views/AddEmployees";
-import UpdateEmployee from "views/UpdateEmployee";
+import ClubList from "views/employee/ClubList";
+import EventList from "views/employee/EventList";
+import ClubRegistration from "views/employee/ClubRegister";
+import EventRegistration from "views/employee/EventRegister";
+import EmployeeList from "views/SuperAdmin/EmployeeList";
+import AddEmployee from "views/SuperAdmin/AddEmployees";
+import UpdateEmployee from "views/SuperAdmin/UpdateEmployee";
 
 //Empolyee Module Definition
 import EmpDashboard from "views/employee/Dashboard.js";
@@ -76,7 +76,7 @@ var routes = [
   {
     path: "/club-history",
     name: "Club History",
-    icon: "tim-icons icon-align-cent",
+    icon: "tim-icons icon-align-center",
     component: Tables,
     layout: "/admin"
   },
@@ -88,12 +88,45 @@ var routes = [
     component: Eventhistory,
     layout: "/admin"
   },
+ 
   {
-    path: "/register",
-    // name: "Registration",
-    // rtlName: "Registration",
-    // icon: "tim-icons icon-badge",
-    component: UserRegisterations,
+    path: "/club-register",
+     name: "Club Register",
+     rtlName: "Registration",
+     icon: "tim-icons icon-badge",
+    component: ClubRegistration,
+    layout: "/admin"
+  },
+  {
+    path: "/event-register",
+     name: "Event Register",
+     rtlName: "Registration",
+     icon: "tim-icons icon-badge",
+    component: EventRegistration,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-list",
+     name: "Employee List",
+     rtlName: "Registration",
+     icon: "tim-icons icon-badge",
+    component: EmployeeList,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-add",
+     name: "Add Employees",
+     rtlName: "Registration",
+     icon: "tim-icons icon-badge",
+    component: AddEmployee,
+    layout: "/admin"
+  },
+  {
+    path: "/employees-update",
+     name: "Update Employees",
+     rtlName: "Registration",
+     icon: "tim-icons icon-badge",
+    component: UpdateEmployee,
     layout: "/admin"
   },
   {
@@ -104,59 +137,28 @@ var routes = [
     layout: "/admin"
   },
   {
+    path: "/register",
+    // name: "Registration",
+    // rtlName: "Registration",
+    // icon: "tim-icons icon-badge",
+    component: UserRegisterations,
+    layout: "/admin"
+  },
+ 
+  {
     path: "/dashboard",
-    name: "Dashboard",
-    icon: "tim-icons icon-chart-pie-36",
+   // name: "Dashboard",
+   // icon: "tim-icons icon-chart-pie-36",
     component: EmpDashboard,
     layout: "/employee"
   },
   {
     path: "/event-history",
-    name: "Event History",
-    icon: "tim-icons icon-align-center",
+  //  name: "Event History",
+   // icon: "tim-icons icon-align-center",
     component: EmpEventhistory,
     layout: "/employee"
   },
   
-  {
-    path: "/club-register",
-    // name: "Registration",
-    // rtlName: "Registration",
-    // icon: "tim-icons icon-badge",
-    component: ClubRegistration,
-    layout: "/admin"
-  },
-  {
-    path: "/event-register",
-    // name: "Registration",
-    // rtlName: "Registration",
-    // icon: "tim-icons icon-badge",
-    component: EventRegistration,
-    layout: "/admin"
-  },
-  {
-    path: "/employees-list",
-    // name: "Registration",
-    // rtlName: "Registration",
-    // icon: "tim-icons icon-badge",
-    component: EmployeeList,
-    layout: "/admin"
-  },
-  {
-    path: "/employees-add",
-    // name: "Registration",
-    // rtlName: "Registration",
-    // icon: "tim-icons icon-badge",
-    component: AddEmployee,
-    layout: "/admin"
-  },
-  {
-    path: "/employees-update",
-    // name: "Registration",
-    // rtlName: "Registration",
-    // icon: "tim-icons icon-badge",
-    component: UpdateEmployee,
-    layout: "/admin"
-  },
 ];
 export default routes;
