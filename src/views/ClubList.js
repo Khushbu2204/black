@@ -40,15 +40,18 @@ function ClubList() {
                       <th>Club Id</th>
                       <th>Club Name</th>
                       <th>category</th>
+                      
+                      <th>created date</th>
                       <th className="text-center">Register</th>
                     </tr>
                   </thead>
                   {clubs.map((club) => (
                     <tbody>
                       <tr>
-                        <td>{club.title}</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
+                        <td>{club.club_id}</td>
+                        <td>{club.club_name}</td>
+                        <td>{club.category}</td>
+                        <td>{club.date_of_creation}</td>
                         <td className="text-center">$36,738</td>
                       </tr>
                     </tbody>
